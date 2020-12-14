@@ -26,17 +26,19 @@ int main() {
     }
     inFile.close();
 
-    //Find the pair of values that sum to 2020
+    //Find the triplets of values that sum to 2020
     int answerToPuzzle;
-    int counter = 0;
-    for(auto val: numbers) {
-        for(std::vector<int>::iterator it = numbers.begin() + counter; it != numbers.end(); it++){
-            if ((val + *it) == 2020) {
-                answerToPuzzle = val * (*it);
-                break;
+    for(auto val: numbers){
+        for(auto val2: numbers){
+            for(auto val3: numbers){
+                if(val + val2 + val3){
+                    if(val + val2 + val3 == 2020){
+                        answerToPuzzle = val*val2*val3;
+                        break;
+                    }
+                }
             }
         }
-        counter++;
     }
 
     std::cout << "The answer to the puzzle is: " << answerToPuzzle << std::endl;
