@@ -31,16 +31,13 @@ int main() {
     for(auto val: numbers){
         for(auto val2: numbers){
             for(auto val3: numbers){
-                if(val + val2 + val3){
-                    if(val + val2 + val3 == 2020){
-                        answerToPuzzle = val*val2*val3;
-                        break;
-                    }
+                if(val + val2 + val3 == 2020){
+                    answerToPuzzle = val*val2*val3;
+                    break;
                 }
             }
         }
     }
-
+    
     std::cout << "The answer to the puzzle is: " << answerToPuzzle << std::endl;
-
 }
