@@ -6,48 +6,34 @@
 
 using namespace std;
 
-// template <typename T> void printVector(vector<T> &vec) {
-    
-//     for (typename vector<T>::iterator it = vec.begin(); it != vec.end(); it++) {
-//         cout << *it << endl;
-//     }
-// }
-
 int main() {
 
     ifstream inFile("input.txt");
-    string buffer = " ";
-
-    int counter = 0;
+    string strBuffer = "";
     int sum = 0;
-
     bool charExist;
+    string str;
 
-    while (!inFile.eof()) 
-    {
-        string str;
-        inFile >> str;
+    while (!inFile.eof()) {
+    
+        getline(inFile, str);
         if (str.empty()) {
-            buffer = " ";
-            charExist = false;
-            counter = 0;
+            sum += strBuffer.length();
+            strBuffer = "";
         } else {
-
             for (auto ch1: str) {
-                cout << "ch1: " << ch1 << endl;
-                for (auto ch2: buffer) {
-
+                charExist = false;
+                for (auto ch2: strBuffer) {
                     if (ch1 == ch2) {
                         charExist = true;
                         break;
                     }
-                cout << "ch2: " << ch2 << endl;
                 }
-                cout << "buffer: " << buffer << endl;
                 if (!charExist) {
-                    buffer.push_back(ch1);
+                    strBuffer.push_back(ch1);
                 }
             }
-        } 
+        }
     }
+    cout << "The sum is: " << sum << endl;
 }
