@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ALL_BUILD", "ALL_BUILD.vcxproj", "{04746688-B2F9-341C-9874-C92E3B33D6C4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8DF5A9C6-DA20-3E8F-984F-4F0220B56994} = {8DF5A9C6-DA20-3E8F-984F-4F0220B56994}
+		{4752069A-8AF1-3FCD-929C-1751BDF95732} = {4752069A-8AF1-3FCD-929C-1751BDF95732}
+		{DAC65B28-0ABF-3261-8C67-B1EA5A36477A} = {DAC65B28-0ABF-3261-8C67-B1EA5A36477A}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZERO_CHECK", "ZERO_CHECK.vcxproj", "{8DF5A9C6-DA20-3E8F-984F-4F0220B56994}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "day7-program", "day7-program.vcxproj", "{4752069A-8AF1-3FCD-929C-1751BDF95732}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8DF5A9C6-DA20-3E8F-984F-4F0220B56994} = {8DF5A9C6-DA20-3E8F-984F-4F0220B56994}
+		{DAC65B28-0ABF-3261-8C67-B1EA5A36477A} = {DAC65B28-0ABF-3261-8C67-B1EA5A36477A}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "graph-lib", "graph-lib.vcxproj", "{DAC65B28-0ABF-3261-8C67-B1EA5A36477A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8DF5A9C6-DA20-3E8F-984F-4F0220B56994} = {8DF5A9C6-DA20-3E8F-984F-4F0220B56994}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+		MinSizeRel|x64 = MinSizeRel|x64
+		RelWithDebInfo|x64 = RelWithDebInfo|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04746688-B2F9-341C-9874-C92E3B33D6C4}.Debug|x64.ActiveCfg = Debug|x64
+		{04746688-B2F9-341C-9874-C92E3B33D6C4}.Release|x64.ActiveCfg = Release|x64
+		{04746688-B2F9-341C-9874-C92E3B33D6C4}.MinSizeRel|x64.ActiveCfg = MinSizeRel|x64
+		{04746688-B2F9-341C-9874-C92E3B33D6C4}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{8DF5A9C6-DA20-3E8F-984F-4F0220B56994}.Debug|x64.ActiveCfg = Debug|x64
+		{8DF5A9C6-DA20-3E8F-984F-4F0220B56994}.Debug|x64.Build.0 = Debug|x64
+		{8DF5A9C6-DA20-3E8F-984F-4F0220B56994}.Release|x64.ActiveCfg = Release|x64
+		{8DF5A9C6-DA20-3E8F-984F-4F0220B56994}.Release|x64.Build.0 = Release|x64
+		{8DF5A9C6-DA20-3E8F-984F-4F0220B56994}.MinSizeRel|x64.ActiveCfg = MinSizeRel|x64
+		{8DF5A9C6-DA20-3E8F-984F-4F0220B56994}.MinSizeRel|x64.Build.0 = MinSizeRel|x64
+		{8DF5A9C6-DA20-3E8F-984F-4F0220B56994}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{8DF5A9C6-DA20-3E8F-984F-4F0220B56994}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+		{4752069A-8AF1-3FCD-929C-1751BDF95732}.Debug|x64.ActiveCfg = Debug|x64
+		{4752069A-8AF1-3FCD-929C-1751BDF95732}.Debug|x64.Build.0 = Debug|x64
+		{4752069A-8AF1-3FCD-929C-1751BDF95732}.Release|x64.ActiveCfg = Release|x64
+		{4752069A-8AF1-3FCD-929C-1751BDF95732}.Release|x64.Build.0 = Release|x64
+		{4752069A-8AF1-3FCD-929C-1751BDF95732}.MinSizeRel|x64.ActiveCfg = MinSizeRel|x64
+		{4752069A-8AF1-3FCD-929C-1751BDF95732}.MinSizeRel|x64.Build.0 = MinSizeRel|x64
+		{4752069A-8AF1-3FCD-929C-1751BDF95732}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{4752069A-8AF1-3FCD-929C-1751BDF95732}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+		{DAC65B28-0ABF-3261-8C67-B1EA5A36477A}.Debug|x64.ActiveCfg = Debug|x64
+		{DAC65B28-0ABF-3261-8C67-B1EA5A36477A}.Debug|x64.Build.0 = Debug|x64
+		{DAC65B28-0ABF-3261-8C67-B1EA5A36477A}.Release|x64.ActiveCfg = Release|x64
+		{DAC65B28-0ABF-3261-8C67-B1EA5A36477A}.Release|x64.Build.0 = Release|x64
+		{DAC65B28-0ABF-3261-8C67-B1EA5A36477A}.MinSizeRel|x64.ActiveCfg = MinSizeRel|x64
+		{DAC65B28-0ABF-3261-8C67-B1EA5A36477A}.MinSizeRel|x64.Build.0 = MinSizeRel|x64
+		{DAC65B28-0ABF-3261-8C67-B1EA5A36477A}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{DAC65B28-0ABF-3261-8C67-B1EA5A36477A}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B31D5A94-07B3-3D2B-A782-3EFE91DA5809}
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
