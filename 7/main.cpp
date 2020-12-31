@@ -9,7 +9,6 @@ using namespace std;
 int main() {
 
     ifstream inFile("input.txt");
-
-    cout << "Hello world!";
+    graph g(inFile);
     
 }
