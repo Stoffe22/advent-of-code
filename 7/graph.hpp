@@ -1,11 +1,6 @@
-#include <iostream>
+#pragma once
+
 #include <vector>
-
-using namespace std;
-
-typedef struct node node;
-typedef struct graph graph;
-
 struct node {
     string name;
     vector<string> neighbours;

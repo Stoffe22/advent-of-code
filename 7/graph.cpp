@@ -1,3 +1,4 @@
+#include <iostream>
 #include <fstream>
 #include <boost/algorithm/string.hpp>
 #include "graph.hpp"
