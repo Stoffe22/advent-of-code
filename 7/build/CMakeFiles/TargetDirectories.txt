@@ -1,4 +1,0 @@
-C:/Users/jonas/OneDrive/Dokument/Programmering/C++/AdventOfCode/7/build/CMakeFiles/day7-program.dir
-C:/Users/jonas/OneDrive/Dokument/Programmering/C++/AdventOfCode/7/build/CMakeFiles/graph-lib.dir
-C:/Users/jonas/OneDrive/Dokument/Programmering/C++/AdventOfCode/7/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/jonas/OneDrive/Dokument/Programmering/C++/AdventOfCode/7/build/CMakeFiles/ZERO_CHECK.dir
