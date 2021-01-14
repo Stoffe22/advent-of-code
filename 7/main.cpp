@@ -1,16 +1,13 @@
 #include <iostream>
-#include <fstream>
-#include <vector>
+#include <string>
 
 #include "Graph.hpp"
-
-using namespace std;
-
 
 
 int main() {
 
-    const string file{"input.txt"};
+    const std::string file = "input.txt";
     graph graph(file);
-    
+
+
 }
