@@ -1,7 +1,7 @@
 #include <string>
 #include "Graph.hpp"
 
-#include <range/v3/view/split.hpp>
+//#include <range/v3/view/split.hpp>
 
 void node::addNeighbour(const std::string& name)
 {
@@ -9,7 +9,7 @@ void node::addNeighbour(const std::string& name)
 }
 
 graph::graph(const std::string& filename) {
-    std::string line;
+    std::string line; 
     std::ifstream inFile(filename.c_str());
     while(!inFile.eof()) {
         getline(inFile, line);

@@ -1,10 +1,14 @@
 {
     "files.associations": {
+        "string": "cpp"
     },
 
+    "C_Cpp.loggingLevel": "Error",
+
+    "cmake.configureOnOpen": true,
     "cmake.configureSettings": {
-          "CMAKE_TOOLCHAIN_FILE": "[vcpkg root]/scripts/buildsystems/vcpkg.cmake"
+        "CMAKE_TOOLCHAIN_FILE": "C:/DEV/vcpkg/scripts/buildsystems/vcpkg.cmake",
+        "VCPKG_BUILD": "ON",
     },
-    "C_Cpp.loggingLevel": "Debug"
-          
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"      
 }
