@@ -6,7 +6,7 @@
 int main() {
 
     const std::string file = "input.txt";
-    graph graph(file);
+    Graph graph(file);
 
 
 }
