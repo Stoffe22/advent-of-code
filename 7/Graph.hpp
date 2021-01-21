@@ -12,7 +12,7 @@ public:
     const std::string& getName();
 
 private:
-    std::string name;
+    std::string name_;
     std::vector<std::string> neighbours;
     bool isVisited;
 };
