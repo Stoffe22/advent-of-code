@@ -1,6 +1,11 @@
-#include <string>
 #include "Graph.hpp"
+
+#include <string>
 #include <boost/algorithm/string.hpp>
+
+#include "lib/StringHandler.hpp"
+
+
 
 
 void Node::addNeighbour(const std::string& name)
@@ -8,18 +13,18 @@ void Node::addNeighbour(const std::string& name)
     neighbours.push_back(std::move(name));
 }
 
-Node::Node(std::string&& nodeName)
-    : name(nodeName), isVisited(false)
+Node::Node(std::string&& name)
+    : name_(name), isVisited(false)
 {
-    nodeName = nullptr;
 }
 
-const std::string& Node::getName() { return name;}
+const std::string& Node::getName() { return name_;}
 
 int Graph::addNode(Node& n)
 {
-    nodes[nrOfNodes++] = n;
-    return nrOfNodes - 1;
+    nodes.push_back(n);
+    nrOfNodes++;
+    return nrOfNodes;
 }
 
 Node& Graph::getNode(int index)
@@ -37,8 +42,6 @@ const bool Graph::nodeExist(const std::string& name)
     return false;
 }
 
-
-
 int Graph::nrOfNodes = 0;
 
 Graph::Graph(const std::string& filename) {
@@ -49,25 +52,27 @@ Graph::Graph(const std::string& filename) {
     {
         getline(inFile, line);
         
-        std::vector<std::string> results;
-        boost::split(results, line, [] (char c){return c == ', ' || isdigit(c);});
-        for (std::vector<std::string>::iterator nameIt = results.begin();
-             nameIt != results.end(); nameIt++)
-            if (nameIt == results.begin() && !nodeExist(*nameIt))
-            {   
-                Node n(std::move(*nameIt));
-                j = addNode(n);
-            }
-            else
-            {
-                Node& n = getNode(j);
-                n.addNeighbour(*nameIt);
+        std::vector<std::string> nodeList;
+        boost::split(nodeList, line, [] (char c){return c == ', ' || isdigit(c);});
+        std::string originName = nodeList[0];
+        cleanString(originName);
+        
+        if(!nodeExist(originName))
+        {
+            Node originNode(std::move(originName));
+            j = addNode(originNode);
+        }
 
-                if(!nodeExist(*nameIt))
-                {
-                    Node newNode(std::move(*nameIt));
-                }
+        Node& originNode = getNode(j);
+        for (auto nodeIter = nodeList.begin() + 1; nodeIter != nodeList.end(); nodeIter++)
+        {
+            originNode.addNeighbour(*nodeIter);
+
+            if(!nodeExist(*nodeIter))
+            {
+                Node neighbourNode(std::move(*nodeIter));
+                addNode(neighbourNode);
             }
-         
+        }
     }
 }

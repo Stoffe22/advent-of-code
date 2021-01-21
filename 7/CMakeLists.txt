@@ -14,9 +14,14 @@ add_library(graph-lib
     Graph.hpp
 )
 
+add_library(my-string-lib
+    lib/StringHandler.cpp
+    lib/StringHandler.hpp
+)
+
 add_executable(day7 main.cpp)
 
-target_link_libraries(day7 PRIVATE graph-lib)
+target_link_libraries(day7 PRIVATE graph-lib my-string-lib)
 
 
 #TARGET_LINK_LIBRARIES(day7
