@@ -51,12 +51,27 @@ Graph::Graph(const std::string& filename) {
     while(!inFile.eof()) 
     {
         getline(inFile, line);
-        
+
+        // Remove irrelevant characters and words
         std::vector<std::string> nodeList;
         boost::split(nodeList, line, [] (char c){return c == ', ' || isdigit(c);});
         std::string originName = nodeList[0];
-        cleanString(originName);
+        removeCharacter(originName, ' ');
+        removeWord(originName, "contain");
+        removeWord(originName, "bag");
+        removeWord(originName, "bags");
         
+        for (std::vector<std::string>::iterator neighbourIt = nodeList.begin() + 1;
+                neighbourIt != nodeList.end();
+                neighbourIt++)
+        {
+            removeCharacter(*neighbourIt, ',');
+            removeCharacter(*neighbourIt, ' ');
+            removeCharacter(*neighbourIt, '.');
+            removeWord(*neighbourIt, "bag");
+            removeWord(*neighbourIt, "bags");
+        } 
+
         if(!nodeExist(originName))
         {
             Node originNode(std::move(originName));
@@ -64,13 +79,13 @@ Graph::Graph(const std::string& filename) {
         }
 
         Node& originNode = getNode(j);
-        for (auto nodeIter = nodeList.begin() + 1; nodeIter != nodeList.end(); nodeIter++)
-        {
-            originNode.addNeighbour(*nodeIter);
-
-            if(!nodeExist(*nodeIter))
+        for (auto neighbourName = nodeList.begin() + 1; neighbourName != nodeList.end();
+             neighbourName++)
+        {   
+            originNode.addNeighbour(*neighbourName);
+            if(!nodeExist(*neighbourName))
             {
-                Node neighbourNode(std::move(*nodeIter));
+                Node neighbourNode(std::move(*neighbourName));
                 addNode(neighbourNode);
             }
         }

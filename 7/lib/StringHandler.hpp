@@ -1,3 +1,4 @@
 #include <string>
 
-void cleanString(std::string& str);
+void removeCharacter(std::string& str, const char& c);
+void removeWord(std::string& inputString, std::string&& wordToRemove);
