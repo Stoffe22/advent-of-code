@@ -2,6 +2,7 @@
 
 #include <string>
 #include <boost/algorithm/string.hpp>
+#include <stdexcept>
 
 #include "lib/StringHandler.hpp"
 
@@ -35,6 +36,8 @@ Node& Graph::getNode(const std::string& nodeName)
             return node;
         }
     }
+
+    throw std::invalid_argument("asked to get non-existing node!");
 }
 
 const bool Graph::nodeExist(const std::string& name)
@@ -52,7 +55,7 @@ int Graph::nrOfNodes = 0;
 Graph::Graph(const std::string& filename) {
     std::string line; 
     std::ifstream inFile(filename.c_str());
-    int j;
+    
     while(!inFile.eof()) 
     {
         getline(inFile, line);
@@ -85,14 +88,19 @@ Graph::Graph(const std::string& filename) {
 
         for (size_t i = 1; i < nodeList.size(); i++)
         {   
-            Node& originNode = getNode(originName);
-            originNode.addNeighbour(nodeList[i]);
-            if(!nodeExist(nodeList[i]))
+            try 
             {
-                nodeInsert(nodeList[i]);
+                Node& originNode = getNode(originName);
+                originNode.addNeighbour(nodeList[i]);
+                if(!nodeExist(nodeList[i]))
+                {
+                    nodeInsert(nodeList[i]);
+                }
+            }
+            catch (const std::invalid_argument& e)
+            {
+                std::cout << "Error: "<< e.what() <<  std::endl;
             }
         }
     }
-
-    std::cout << "The number of nodes are: " << j << std::endl;
 }
