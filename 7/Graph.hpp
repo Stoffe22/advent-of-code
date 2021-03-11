@@ -7,7 +7,8 @@
 class Node 
 {
 public:
-    Node(std::string&& name);
+    Node(const std::string& name);
+    Node() = default;
     void addNeighbour(const std::string& name);
     const std::string& getName();
 
@@ -22,8 +23,8 @@ class Graph
 public:
     Graph(const std::string& filename);
     const bool nodeExist(const std::string& name); 
-    int addNode(Node& n);
-    Node& getNode(int index);
+    void nodeInsert(const std::string& nodeName);
+    Node& getNode(const std::string& nodeName);
     void traverse();
     void print();
     ~Graph() = default;

@@ -1,5 +1,6 @@
 vibrant purple bags contain 3 shiny lavender bags, 1 mirrored gray bag, 4 muted bronze bags.
 posh crimson bags contain 4 drab plum bags, 5 dotted purple bags, 3 vibrant lavender bags, 2 striped plum bags.
+shiny lavender bags contain 5 muted bronze bags.
 pale cyan bags contain 5 drab violet bags, 2 dotted crimson bags.
 dim lime bags contain 1 muted purple bag, 2 striped silver bags.
 clear aqua bags contain 2 plaid green bags.
@@ -218,7 +219,6 @@ plaid orange bags contain 5 shiny magenta bags.
 posh plum bags contain 2 clear beige bags, 5 faded silver bags, 5 drab beige bags, 4 dim crimson bags.
 pale maroon bags contain 1 posh maroon bag, 4 wavy magenta bags.
 shiny black bags contain 1 dotted tomato bag, 1 mirrored silver bag, 5 plaid maroon bags, 5 clear salmon bags.
-shiny lavender bags contain 5 muted bronze bags.
 wavy violet bags contain 2 dotted tomato bags, 5 bright black bags, 4 clear cyan bags.
 dotted tan bags contain 4 plaid teal bags.
 drab tomato bags contain 5 dark black bags.

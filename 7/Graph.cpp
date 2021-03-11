@@ -10,26 +10,31 @@
 
 void Node::addNeighbour(const std::string& name)
 {
-    neighbours.push_back(std::move(name));
+    neighbours.push_back(name);
 }
 
-Node::Node(std::string&& name)
+Node::Node(const std::string& name)
     : name_(name), isVisited(false)
 {
 }
 
+
 const std::string& Node::getName() { return name_;}
 
-int Graph::addNode(Node& n)
+void Graph::nodeInsert(const std::string& nodeName)
 {
-    nodes.push_back(n);
+    Node node(nodeName);
+    nodes.push_back(node);
     nrOfNodes++;
-    return nrOfNodes;
 }
 
-Node& Graph::getNode(int index)
+Node& Graph::getNode(const std::string& nodeName)
 {
-    return nodes[0];//TODO: implement body
+    for (auto& node: nodes) {
+        if (node.getName() == nodeName) {
+            return node;
+        }
+    }
 }
 
 const bool Graph::nodeExist(const std::string& name)
@@ -60,7 +65,7 @@ Graph::Graph(const std::string& filename) {
         removeWord(originName, "contain");
         removeWord(originName, "bag");
         removeWord(originName, "bags");
-        
+
         for (std::vector<std::string>::iterator neighbourIt = nodeList.begin() + 1;
                 neighbourIt != nodeList.end();
                 neighbourIt++)
@@ -72,22 +77,22 @@ Graph::Graph(const std::string& filename) {
             removeWord(*neighbourIt, "bags");
         } 
 
+        // Add origin node to graph
         if(!nodeExist(originName))
         {
-            Node originNode(std::move(originName));
-            j = addNode(originNode);
+            nodeInsert(originName);
         }
 
-        Node& originNode = getNode(j);
-        for (auto neighbourName = nodeList.begin() + 1; neighbourName != nodeList.end();
-             neighbourName++)
+        for (size_t i = 1; i < nodeList.size(); i++)
         {   
-            originNode.addNeighbour(*neighbourName);
-            if(!nodeExist(*neighbourName))
+            Node& originNode = getNode(originName);
+            originNode.addNeighbour(nodeList[i]);
+            if(!nodeExist(nodeList[i]))
             {
-                Node neighbourNode(std::move(*neighbourName));
-                addNode(neighbourNode);
+                nodeInsert(nodeList[i]);
             }
         }
     }
+
+    std::cout << "The number of nodes are: " << j << std::endl;
 }
