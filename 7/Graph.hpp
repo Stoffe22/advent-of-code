@@ -25,7 +25,7 @@ public:
     const bool nodeExist(const std::string& name); 
     void nodeInsert(const std::string& nodeName);
     Node& getNode(const std::string& nodeName);
-    void traverse();
+    void traverse(Node& node);
     void print();
     ~Graph() = default;
 

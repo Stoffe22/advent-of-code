@@ -55,11 +55,13 @@ int Graph::nrOfNodes = 0;
 Graph::Graph(const std::string& filename) {
     std::string line; 
     std::ifstream inFile(filename.c_str());
+    std::cout << "Started constructing graph";
+    int i = 0;
     
     while(!inFile.eof()) 
     {
         getline(inFile, line);
-
+        //std::cout << i++ << std::endl; 
         // Remove irrelevant characters and words
         std::vector<std::string> nodeList;
         boost::split(nodeList, line, [] (char c){return c == ', ' || isdigit(c);});
@@ -103,4 +105,17 @@ Graph::Graph(const std::string& filename) {
             }
         }
     }
+}
+
+void Graph::print() 
+{
+    for (auto node: nodes)
+    {
+        std::cout << node.getName() << std::endl;
+    } 
+}
+
+void Graph::traverse(Node& node) {
+
+
 }

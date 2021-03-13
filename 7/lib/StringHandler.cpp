@@ -13,7 +13,7 @@ void removeWord(std::string& str, std::string&& wordToRemove)
     std::string newString;
     size_t len = wordToRemove.length();
     size_t j = 0;
-    size_t counter;
+    size_t counter = 0;
     size_t startIndex;
     for (size_t i = 0; i < str.length(); i++) 
     {

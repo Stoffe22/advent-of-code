@@ -3,9 +3,16 @@
 #include "Graph.hpp"
 
 
-int main() {
+int main(int argc, char** argv) {
+    
+    const char* fileNameBuffer;
+    fileNameBuffer = argv[1];
+    std::string fileName(fileNameBuffer);
+    std::string filePath = "../../" + fileName;
+    Graph graph(filePath);
 
-    const std::string file = "input.txt";
-    Graph graph(file);
+    graph.print();
+    std::cout << Graph::nrOfNodes;
+
 
 }
