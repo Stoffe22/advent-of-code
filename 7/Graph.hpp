@@ -11,6 +11,9 @@ public:
     Node() = default;
     void addNeighbour(const std::string& name);
     const std::string& getName();
+    std::vector<std::string>& getNeighbours();
+    void setVisited(bool state);
+    bool IsVisited();
 
 private:
     std::string name_;

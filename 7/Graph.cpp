@@ -3,10 +3,9 @@
 #include <string>
 #include <boost/algorithm/string.hpp>
 #include <stdexcept>
+#include <queue>
 
 #include "lib/StringHandler.hpp"
-
-
 
 
 void Node::addNeighbour(const std::string& name)
@@ -19,8 +18,16 @@ Node::Node(const std::string& name)
 {
 }
 
+bool Node::IsVisited() { return isVisited; }
 
-const std::string& Node::getName() { return name_;}
+const std::string& Node::getName() { return name_; }
+
+std::vector<std::string>& Node::getNeighbours() { return neighbours; }
+
+void Node::setVisited(bool state)
+{
+    Node::isVisited = state;
+} 
 
 void Graph::nodeInsert(const std::string& nodeName)
 {
@@ -55,7 +62,7 @@ int Graph::nrOfNodes = 0;
 Graph::Graph(const std::string& filename) {
     std::string line; 
     std::ifstream inFile(filename.c_str());
-    std::cout << "Started constructing graph";
+    std::cout << "Started constructing graph.." << std::endl;
     int i = 0;
     
     while(!inFile.eof()) 
@@ -105,6 +112,7 @@ Graph::Graph(const std::string& filename) {
             }
         }
     }
+    std::cout << "Graph constructed!" << std::endl;
 }
 
 void Graph::print() 
@@ -116,6 +124,22 @@ void Graph::print()
 }
 
 void Graph::traverse(Node& node) {
+    std::queue<Node> q;
+    node.setVisited(true);
+    q.push(node);
 
-
+    while(!q.empty())
+    {
+        Node origNode = q.front();
+        q.pop();
+        for (auto& neighName: origNode.getNeighbours())
+        {   
+            Node& neighNode = Graph::getNode(neighName);
+            if (!neighNode.IsVisited())
+            {
+                neighNode.setVisited(true);
+                q.push(neighNode);
+            }
+        }
+    }
 }
