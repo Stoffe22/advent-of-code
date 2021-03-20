@@ -1,7 +1,11 @@
-#include <iostream>
-#include <string>
 #include "Graph.hpp"
 
+#include <iostream>
+#include <string>
+#include <vector>
+#include <boost/algorithm/string.hpp>
+
+#include "lib/StringHandler.hpp"
 
 int main(int argc, char** argv) {
     
@@ -10,8 +14,28 @@ int main(int argc, char** argv) {
     fileNameBuffer = argv[1];
     std::string fileName(fileNameBuffer);
     std::string filePath = "../../" + fileName;*/
-    std::string filePath = "input.txt"; 
+
+    // Construct graph
+    std::string filePath = "input.txt";
     Graph graph(filePath);
+
+    // Get src nodes
+    std::ifstream inFile(filePath);
+    std::string line;
+    std::vector<std::string> srcNodes;
+
+    while(!inFile.eof())
+    {
+        getline(inFile, line);
+        std::vector<std::string> result;
+        boost::split(result, line, [] (char c){return c == ',';});
+        std::string srcName = result[0];
+        removeCharacter(srcName, ' ');
+        removeWord(srcName, "contain");
+        removeWord(srcName, "bag");
+        removeWord(srcName, "bags");
+        srcNodes.push_back(srcName);
+    } 
 
     //graph.print();
     //std::cout << Graph::nrOfNodes;
@@ -21,9 +45,12 @@ int main(int argc, char** argv) {
     printf("Enter origin node: ");
     scanf("%s", str);
     std::string originNode(str);*/
-    std::string origName = "vibrantpurple";
-    Node& origNode = graph.getNode(origName);
-    graph.traverse(origNode);
+    // const std::string destNode = "vibrantpurple";
+
+
+    // bool result = graph.isConnected(src, dest);
+
+    // std::cout << result << std::endl;
 
     return 0;
     

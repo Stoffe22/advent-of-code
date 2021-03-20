@@ -143,3 +143,11 @@ void Graph::traverse(Node& node) {
         }
     }
 }
+
+bool Graph::isConnected(const std::string& src, const std::string& dest)
+{
+    Node& srcNode = getNode(src);
+    traverse(srcNode);
+    Node& destNode = getNode(dest);
+    return destNode.IsVisited();
+}
