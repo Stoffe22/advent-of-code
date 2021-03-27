@@ -6,52 +6,36 @@
 #include <boost/algorithm/string.hpp>
 
 #include "lib/StringHandler.hpp"
+#include "lib/SrcNodesLoader.hpp"
+
+using namespace std;
 
 int main(int argc, char** argv) {
-    
-   
-    /*const char* fileNameBuffer;
-    fileNameBuffer = argv[1];
-    std::string fileName(fileNameBuffer);
-    std::string filePath = "../../" + fileName;*/
 
     // Construct graph
-    std::string filePath = "input.txt";
-    Graph graph(filePath);
+    const string file = "input.txt";
+    Graph graph(file);
 
-    // Get src nodes
-    std::ifstream inFile(filePath);
-    std::string line;
-    std::vector<std::string> srcNodes;
+    // Load the source nodes
+    vector<string> srcNodes;
+    vector<string>* srcNodes_p = &srcNodes;
+    LoadSrcNodes(file, srcNodes_p);
 
-    while(!inFile.eof())
-    {
-        getline(inFile, line);
-        std::vector<std::string> result;
-        boost::split(result, line, [] (char c){return c == ',';});
-        std::string srcName = result[0];
-        removeCharacter(srcName, ' ');
-        removeWord(srcName, "contain");
-        removeWord(srcName, "bag");
-        removeWord(srcName, "bags");
-        srcNodes.push_back(srcName);
-    } 
+    // Loop over the src nodes and check if they are connected
+    // to "shiny gold" node
+    const string& destNode = "shinygold";
+    bool isConnected = false;
+    int counter = 0;
+    for(auto& srcNode: srcNodes)
+    {   
+        isConnected = graph.isConnected(srcNode, destNode);
+        graph.resetIsVisited();
+        if (isConnected && srcNode != destNode)
+            counter++;
+    }
 
-    //graph.print();
-    //std::cout << Graph::nrOfNodes;
-
-    // Choose origin-node and traverse graph from there
-    /*char str[30];
-    printf("Enter origin node: ");
-    scanf("%s", str);
-    std::string originNode(str);*/
-    // const std::string destNode = "vibrantpurple";
-
-
-    // bool result = graph.isConnected(src, dest);
-
-    // std::cout << result << std::endl;
-
+    // Print result
+    cout << "The result is: " << counter;
     return 0;
-    
 }
+

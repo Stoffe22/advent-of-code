@@ -30,7 +30,7 @@ public:
     Node& getNode(const std::string& nodeName);
     void traverse(Node& node);
     bool isConnected(const std::string& src, const std::string& dest);
-    void print();
+    void resetIsVisited();
     ~Graph() = default;
 
     std::vector<Node> nodes;

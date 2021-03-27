@@ -71,7 +71,7 @@ Graph::Graph(const std::string& filename) {
         //std::cout << i++ << std::endl; 
         // Remove irrelevant characters and words
         std::vector<std::string> nodeList;
-        boost::split(nodeList, line, [] (char c){return c == ', ' || isdigit(c);});
+        boost::split(nodeList, line, [] (char c){return c == ',' || isdigit(c);});
         std::string originName = nodeList[0];
         removeCharacter(originName, ' ');
         removeWord(originName, "contain");
@@ -115,15 +115,14 @@ Graph::Graph(const std::string& filename) {
     std::cout << "Graph constructed!" << std::endl;
 }
 
-void Graph::print() 
+void Graph::resetIsVisited() 
 {
-    for (auto node: nodes)
-    {
-        std::cout << node.getName() << std::endl;
-    } 
+    for(Node& node: nodes)
+        node.setVisited(false);
 }
 
-void Graph::traverse(Node& node) {
+void Graph::traverse(Node& node) 
+{
     std::queue<Node> q;
     node.setVisited(true);
     q.push(node);
