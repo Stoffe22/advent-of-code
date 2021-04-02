@@ -3,6 +3,7 @@
 #include <vector>
 #include <map>
 #include <boost/algorithm/string.hpp>
+#include <boost/tuple/tuple.hpp>
 
 using namespace std;
 
@@ -13,31 +14,32 @@ enum instruction
     nop
 };
 
-void loadInstructions(const string& file, vector<map<enum instruction, int>>* instructions)
+void loadInstructions(const string& file, vector<map<int, boost::tuple<enum instruction, int>>>* instructions)
 {
     ifstream inFile(file);
+    int i = 0;
     while(!inFile.eof())
     {
         string line;
         getline(inFile, line);
         vector<string> lineSplit;
         boost::split(lineSplit, line, [](char c){return c == ' ';});
-        map<enum instruction, int> temp;
+        map<int, boost::tuple<enum instruction, int>> tuple_map;
 
         if (lineSplit[0] == "acc")
         {   
-            temp[acc] = stoi(lineSplit[1]);
-            instructions->push_back(temp);
+            tuple_map[i] = boost::make_tuple(acc, stoi(lineSplit[1]));
+            instructions->push_back(tuple_map);
 
         } else if (lineSplit[0] == "jmp")
-        {
-            temp[jmp] = stoi(lineSplit[1]);
-            instructions->push_back(temp);
+        {   
+            tuple_map[i] = boost::make_tuple(jmp, stoi(lineSplit[1]));
+            instructions->push_back(tuple_map);
         } else if (lineSplit[0] == "nop")
         {
-            temp[nop] = stoi(lineSplit[1]);
-            instructions->push_back(temp);
+            tuple_map[i] = boost::make_tuple(nop, stoi(lineSplit[1]));
+            instructions->push_back(tuple_map);
         }
-            
+        i++;      
     }
 }
